@@ -1,0 +1,15 @@
+### 1. Попытка без ключа (Должно быть 401 Unauthorized)
+GET http://localhost:8080/tasks
+
+### 2. Попытка с правильным ключом (Должно работать)
+GET http://localhost:8080/tasks
+X-API-KEY: secret12345
+
+### 3. Создание задачи с ключом
+POST http://localhost:8080/tasks
+X-API-KEY: secret12345
+Content-Type: application/json
+
+{
+  "title": "Сдать домашку"
+}
