@@ -5,12 +5,10 @@ import (
 	"net/http"
 
 	"assignment-1/internal/handlers"
-	"assignment-1/internal/middleware" // <-- Добавили импорт
+	"assignment-1/internal/middleware"
 )
 
 func main() {
-	// Оборачиваем наш TaskHandler в middleware.Authentication
-	// Теперь любой запрос сначала попадет в auth.go, и только потом в task.go
 	http.HandleFunc("/tasks", middleware.Authentication(handlers.TaskHandler))
 
 	fmt.Println("Server is running on http://localhost:8080")

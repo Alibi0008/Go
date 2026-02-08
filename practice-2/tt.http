@@ -5,7 +5,7 @@ GET http://localhost:8080/tasks
 GET http://localhost:8080/tasks
 X-API-KEY: secret12345
 
-### 3. Создание задачи с ключом
+### 3. Создание задачи с ключом (ОБЯЗАТЕЛЬНО пустая строка перед {)
 POST http://localhost:8080/tasks
 X-API-KEY: secret12345
 Content-Type: application/json
@@ -13,3 +13,16 @@ Content-Type: application/json
 {
   "title": "Сдать домашку"
 }
+
+### 4. Обновить задачу (поставить галочку)
+PATCH http://localhost:8080/tasks?id=1
+X-API-KEY: secret12345
+Content-Type: application/json
+
+{
+  "done": true
+}
+
+### 5. Удалить задачу №1
+DELETE http://localhost:8080/tasks?id=1
+X-API-KEY: secret12345
