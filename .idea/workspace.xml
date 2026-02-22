@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="626a2ad0-4978-449f-8339-d7f0e1fb3bae" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/practice-3/cmd/api/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/practice-3/database/migrations/000001_init.down.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/practice-3/database/migrations/000002_init.up.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/practice-3/go.mod" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/practice-3/go.sum" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/practice-3/internal/delivery/http/handlers.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/practice-3/internal/delivery/http/middleware.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/practice-3/internal/repository/_postgres/postgres.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/practice-3/internal/repository/_postgres/users/users.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/practice-3/internal/usecase/users.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/practice-3/pkg/modules/configs.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/practice-3/pkg/modules/users.go" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 5
+}]]></component>
+  <component name="ProjectId" id="3A2KxVMC6QWpP3sXMaLnUc3NPOW" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "D:/SteamLibrary/Go"
+  }
+}]]></component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="626a2ad0-4978-449f-8339-d7f0e1fb3bae" name="Changes" comment="" />
+      <created>1771785477216</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1771785477216</updated>
+    </task>
+    <servers />
+  </component>
+</project>
