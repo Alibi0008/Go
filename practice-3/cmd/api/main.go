@@ -4,6 +4,7 @@ import (
 	"context"
 	"log"
 	"net/http"
+	"os"
 	"time"
 
 	delivery "practice-3/internal/delivery/http"
@@ -13,23 +14,33 @@ import (
 	"practice-3/pkg/modules"
 )
 
+// initPostgreConfig теперь считывает настройки из Docker Compose (Practice 4)
 func initPostgreConfig() *modules.PostgreConfig {
 	return &modules.PostgreConfig{
-		Host:        "localhost",
-		Port:        "5432",
-		Username:    "postgres",
-		Password:    "postgres",
-		DBName:      "mydb",
-		SSLMode:     "disable",
+		// Используем имя сервиса "db" из docker-compose вместо "localhost"
+		Host:        getEnv("DB_HOST", "db"),
+		Port:        getEnv("DB_PORT", "5432"),
+		Username:    getEnv("DB_USER", "postgres"),
+		Password:    getEnv("DB_PASSWORD", "postgres"),
+		DBName:      getEnv("DB_NAME", "mydb"),
+		SSLMode:     getEnv("DB_SSLMODE", "disable"),
 		ExecTimeout: 5 * time.Second,
 	}
+}
+
+// Вспомогательная функция для получения переменных окружения с дефолтным значением
+func getEnv(key, fallback string) string {
+	if value, ok := os.LookupEnv(key); ok {
+		return value
+	}
+	return fallback
 }
 
 func main() {
 	ctx := context.Background()
 	dbConfig := initPostgreConfig()
 
-	// Инициализация слоев
+	// Инициализация слоев (Dependency Injection)
 	pgxDialect := _postgres.NewPGXDialect(ctx, dbConfig)
 	userRepo := users.NewUserRepository(pgxDialect)
 	userUsecase := usecase.NewUserUsecase(userRepo)
@@ -49,14 +60,15 @@ func main() {
 	apiMux.HandleFunc("PUT /users/{id}", handler.UpdateUser)
 	apiMux.HandleFunc("DELETE /users/{id}", handler.DeleteUser)
 
-	// Защита пользовательских роутов ключом API
+	// Защита пользовательских роутов через Middleware (Auth)
 	mux.Handle("/users/", delivery.AuthMiddleware(apiMux))
 	mux.Handle("/users", delivery.AuthMiddleware(apiMux))
 
-	// Оборачиваем все роуты логгером (выполняется первым, оборачивая Auth)
+	// Оборачиваем все роуты логгером (Middleware: Logging)
 	loggedMux := delivery.LoggingMiddleware(mux)
 
-	log.Println("Сервер запущен на :8080")
+	// Согласно сценарию демо-видео, выводим фразу "Starting the Server"
+	log.Println("Starting the Server on :8080...")
 	if err := http.ListenAndServe(":8080", loggedMux); err != nil {
 		log.Fatalf("Ошибка запуска сервера: %v", err)
 	}

@@ -7,8 +7,8 @@ Content-Type: application/json
 X-API-KEY: secret
 
 {
-  "name": "Ivan Ivanov",
-  "email": "ivan@example.com",
+  "name": "Ivan Musk",
+  "email": "Musk@example.com",
   "age": 21
 }
 
@@ -17,5 +17,5 @@ GET http://localhost:8080/users
 X-API-KEY: secret
 
 ### Получение конкретного пользователя по ID (GET)
-GET http://localhost:8080/users/1
+GET http://localhost:8080/users/8
 X-API-KEY: secret
