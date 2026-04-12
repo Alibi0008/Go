@@ -1,0 +1,104 @@
+@baseUrl = http://localhost:8080
+@json = application/json
+
+### Health check
+GET {{baseUrl}}/health
+
+### Register User A
+POST {{baseUrl}}/users/
+Content-Type: {{json}}
+
+{
+  "username": "user-a",
+  "email": "a@example.com",
+  "password": "secret123"
+}
+
+### Register User B
+POST {{baseUrl}}/users/
+Content-Type: {{json}}
+
+{
+  "username": "user-b",
+  "email": "b@example.com",
+  "password": "secret123"
+}
+
+### Login User A
+# После выполнения скопируйте token в переменную ниже.
+POST {{baseUrl}}/users/login
+Content-Type: {{json}}
+
+{
+  "username": "user-a",
+  "password": "secret123"
+}
+
+### Login User B
+# После выполнения скопируйте token в переменную ниже.
+POST {{baseUrl}}/users/login
+Content-Type: {{json}}
+
+{
+  "username": "user-b",
+  "password": "secret123"
+}
+
+### Login Bootstrap Admin
+# Логин и пароль по умолчанию: admin / admin123
+# После выполнения скопируйте token в переменную ниже.
+POST {{baseUrl}}/users/login
+Content-Type: {{json}}
+
+{
+  "username": "admin",
+  "password": "admin123"
+}
+
+### Tokens and IDs
+@userAToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiYjRiOWY4NzUtNjEzMC00MDk0LWFjMTgtZjIzZTAzMTc0NWZjIiwicm9sZSI6InVzZXIiLCJleHAiOjE3NzYxMDYxOTUsImlhdCI6MTc3NjAxOTc5NX0.ECMWdPdu7yaR-f8NaYcZIrJL0HrQZFwzREloJ0xKHqk
+@userBToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiN2Y0NzU2MDItNjE5My00YWRkLWI1NjgtMzE5MDNiODJiNGIwIiwicm9sZSI6InVzZXIiLCJleHAiOjE3NzYxMDYzMDgsImlhdCI6MTc3NjAxOTkwOH0.oWsnBh8Es2Y-1MsWJ1y8I8eVWJJkO6iVpqItFS9rPso
+@adminToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiYmNjMmNlODUtODkxNy00OWM1LWIzMTUtNWFjMDBjNTMxN2VmIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzc2MTA2MzQ2LCJpYXQiOjE3NzYwMTk5NDZ9.IPaY8MsyEy-KG17ORXlVf7BYieWRE_imXzztYNP1sFA
+@userBId = paste-user-b-id-here
+
+### Get Me with User A token
+GET {{baseUrl}}/users/me
+Authorization: Bearer {{userAToken}}
+
+### Get Me with User B token
+GET {{baseUrl}}/users/me
+Authorization: Bearer {{userBToken}}
+
+### Protected hello with User A token
+GET {{baseUrl}}/users/protected/hello
+Authorization: Bearer {{userAToken}}
+
+### Promote User B with regular user token
+# Должен вернуть 403 Forbidden
+PATCH {{baseUrl}}/users/promote/{{userBId}}
+Authorization: Bearer {{userAToken}}
+
+### Promote User B with admin token
+# Должен вернуть 200 OK и role=admin
+PATCH {{baseUrl}}/users/promote/{{userBId}}
+Authorization: Bearer {{adminToken}}
+
+### Rate limiter demo 1
+GET {{baseUrl}}/health
+
+### Rate limiter demo 2
+GET {{baseUrl}}/health
+
+### Rate limiter demo 3
+GET {{baseUrl}}/health
+
+### Rate limiter demo 4
+GET {{baseUrl}}/health
+
+### Rate limiter demo 5
+GET {{baseUrl}}/health
+
+### Rate limiter demo 6
+# По умолчанию здесь уже должен появиться 429 Too Many Requests,
+# если вы нажимали запросы подряд в пределах 60 секунд.
+GET {{baseUrl}}/health
