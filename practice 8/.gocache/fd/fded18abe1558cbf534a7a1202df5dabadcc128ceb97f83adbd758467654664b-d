@@ -1,0 +1,45 @@
+=== RUN   TestAdd
+--- PASS: TestAdd (0.00s)
+=== RUN   TestAddTableDriven
+=== RUN   TestAddTableDriven/both_positive
+=== RUN   TestAddTableDriven/positive_plus_zero
+=== RUN   TestAddTableDriven/negative_plus_positive
+=== RUN   TestAddTableDriven/both_negative
+--- PASS: TestAddTableDriven (0.00s)
+    --- PASS: TestAddTableDriven/both_positive (0.00s)
+    --- PASS: TestAddTableDriven/positive_plus_zero (0.00s)
+    --- PASS: TestAddTableDriven/negative_plus_positive (0.00s)
+    --- PASS: TestAddTableDriven/both_negative (0.00s)
+=== RUN   TestSubtractTableDriven
+=== RUN   TestSubtractTableDriven/both_positive_numbers
+=== RUN   TestSubtractTableDriven/positive_minus_zero
+=== RUN   TestSubtractTableDriven/negative_minus_positive
+=== RUN   TestSubtractTableDriven/both_negative
+--- PASS: TestSubtractTableDriven (0.00s)
+    --- PASS: TestSubtractTableDriven/both_positive_numbers (0.00s)
+    --- PASS: TestSubtractTableDriven/positive_minus_zero (0.00s)
+    --- PASS: TestSubtractTableDriven/negative_minus_positive (0.00s)
+    --- PASS: TestSubtractTableDriven/both_negative (0.00s)
+=== RUN   TestDivide
+=== RUN   TestDivide/success
+=== RUN   TestDivide/division_by_zero
+--- PASS: TestDivide (0.00s)
+    --- PASS: TestDivide/success (0.00s)
+    --- PASS: TestDivide/division_by_zero (0.00s)
+=== RUN   TestGetRateSuccess
+{USD EUR 0.92 }
+--- PASS: TestGetRateSuccess (0.01s)
+=== RUN   TestGetRateAPIBusinessError
+{  0 invalid currency pair}
+--- PASS: TestGetRateAPIBusinessError (0.00s)
+=== RUN   TestGetRateMalformedJSON
+--- PASS: TestGetRateMalformedJSON (0.00s)
+=== RUN   TestGetRateTimeout
+--- PASS: TestGetRateTimeout (0.20s)
+=== RUN   TestGetRateInternalServerError
+{  0 internal server error}
+--- PASS: TestGetRateInternalServerError (0.00s)
+=== RUN   TestGetRateEmptyBody
+--- PASS: TestGetRateEmptyBody (0.00s)
+PASS
+ok  	practice-8	1.502s

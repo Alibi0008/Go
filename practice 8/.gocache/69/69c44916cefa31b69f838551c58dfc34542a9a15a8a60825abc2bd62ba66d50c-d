@@ -1,0 +1,8 @@
+./archive.go
+./deprecated.go
+./generic.go
+./gob.go
+./mockgen.go
+./package_mode.go
+./parse.go
+./version.go

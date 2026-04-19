@@ -1,0 +1,17 @@
+=== RUN   TestGetRateSuccess
+{USD EUR 0.92 }
+--- PASS: TestGetRateSuccess (0.00s)
+=== RUN   TestGetRateAPIBusinessError
+{  0 invalid currency pair}
+--- PASS: TestGetRateAPIBusinessError (0.00s)
+=== RUN   TestGetRateMalformedJSON
+--- PASS: TestGetRateMalformedJSON (0.00s)
+=== RUN   TestGetRateTimeout
+--- PASS: TestGetRateTimeout (0.20s)
+=== RUN   TestGetRateInternalServerError
+{  0 internal server error}
+--- PASS: TestGetRateInternalServerError (0.00s)
+=== RUN   TestGetRateEmptyBody
+--- PASS: TestGetRateEmptyBody (0.00s)
+PASS
+ok  	practice-8	1.614s

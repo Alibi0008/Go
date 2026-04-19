@@ -1,0 +1,26 @@
+=== RUN   TestGetUserByID
+--- PASS: TestGetUserByID (0.00s)
+=== RUN   TestCreateUser
+--- PASS: TestCreateUser (0.00s)
+=== RUN   TestRegisterUser_UserAlreadyExists
+--- PASS: TestRegisterUser_UserAlreadyExists (0.00s)
+=== RUN   TestRegisterUser_NewUserSuccess
+--- PASS: TestRegisterUser_NewUserSuccess (0.00s)
+=== RUN   TestRegisterUser_CreateFails
+--- PASS: TestRegisterUser_CreateFails (0.00s)
+=== RUN   TestUpdateUserName_EmptyName
+--- PASS: TestUpdateUserName_EmptyName (0.00s)
+=== RUN   TestUpdateUserName_UserNotFound
+--- PASS: TestUpdateUserName_UserNotFound (0.00s)
+=== RUN   TestUpdateUserName_Success
+--- PASS: TestUpdateUserName_Success (0.00s)
+=== RUN   TestUpdateUserName_UpdateFails
+--- PASS: TestUpdateUserName_UpdateFails (0.00s)
+=== RUN   TestDeleteUser_AdminForbidden
+--- PASS: TestDeleteUser_AdminForbidden (0.00s)
+=== RUN   TestDeleteUser_Success
+--- PASS: TestDeleteUser_Success (0.00s)
+=== RUN   TestDeleteUser_RepositoryError
+--- PASS: TestDeleteUser_RepositoryError (0.00s)
+PASS
+ok  	practice-8/service	0.774s
