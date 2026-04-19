@@ -1,0 +1,5 @@
+.appdata/
+.gocache/
+.gopath/
+.home/
+.idea/
