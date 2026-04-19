@@ -9,8 +9,8 @@ POST {{baseUrl}}/users/
 Content-Type: {{json}}
 
 {
-  "username": "user-a",
-  "email": "a@example.com",
+  "username": "user-a2",
+  "email": "a2@example.com",
   "password": "secret123"
 }
 
@@ -19,8 +19,8 @@ POST {{baseUrl}}/users/
 Content-Type: {{json}}
 
 {
-  "username": "user-b",
-  "email": "b@example.com",
+  "username": "user-b2",
+  "email": "b2@example.com",
   "password": "secret123"
 }
 
@@ -30,7 +30,7 @@ POST {{baseUrl}}/users/login
 Content-Type: {{json}}
 
 {
-  "username": "user-a",
+  "username": "user-a2",
   "password": "secret123"
 }
 
@@ -40,7 +40,7 @@ POST {{baseUrl}}/users/login
 Content-Type: {{json}}
 
 {
-  "username": "user-b",
+  "username": "user-b2",
   "password": "secret123"
 }
 
@@ -56,10 +56,10 @@ Content-Type: {{json}}
 }
 
 ### Tokens and IDs
-@userAToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiYjRiOWY4NzUtNjEzMC00MDk0LWFjMTgtZjIzZTAzMTc0NWZjIiwicm9sZSI6InVzZXIiLCJleHAiOjE3NzYxMDYxOTUsImlhdCI6MTc3NjAxOTc5NX0.ECMWdPdu7yaR-f8NaYcZIrJL0HrQZFwzREloJ0xKHqk
-@userBToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiN2Y0NzU2MDItNjE5My00YWRkLWI1NjgtMzE5MDNiODJiNGIwIiwicm9sZSI6InVzZXIiLCJleHAiOjE3NzYxMDYzMDgsImlhdCI6MTc3NjAxOTkwOH0.oWsnBh8Es2Y-1MsWJ1y8I8eVWJJkO6iVpqItFS9rPso
-@adminToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiYmNjMmNlODUtODkxNy00OWM1LWIzMTUtNWFjMDBjNTMxN2VmIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzc2MTA2MzQ2LCJpYXQiOjE3NzYwMTk5NDZ9.IPaY8MsyEy-KG17ORXlVf7BYieWRE_imXzztYNP1sFA
-@userBId = paste-user-b-id-here
+@userAToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMWNiYjk2YjItMjc5My00NDM2LWIzY2UtMzU1NmEyNDg0MTExIiwicm9sZSI6InVzZXIiLCJleHAiOjE3NzYxMDY5OTAsImlhdCI6MTc3NjAyMDU5MH0.Nfisv_8Ol8TBGjjlNzbffMWY_T37bmY-Z5-5t05BHzI
+@userBToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMWFlMzIzZmYtM2NiNC00OWUyLTkzNDgtZGM2OWU3ZGUwNTZiIiwicm9sZSI6InVzZXIiLCJleHAiOjE3NzYxMDcwMTQsImlhdCI6MTc3NjAyMDYxNH0.RsyMOqbU9iNQvceAEIG1YfeE8ps5hgHgmPXaYe9ReQU
+@adminToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiYmNjMmNlODUtODkxNy00OWM1LWIzMTUtNWFjMDBjNTMxN2VmIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzc2MTA3MDQyLCJpYXQiOjE3NzYwMjA2NDJ9.7vtof1kRue_uBy689mA2CpgvzQPgGGwtUaHoCnWjd18
+@userBId = 1ae323ff-3cb4-49e2-9348-dc69e7de056b
 
 ### Get Me with User A token
 GET {{baseUrl}}/users/me
@@ -83,22 +83,5 @@ Authorization: Bearer {{userAToken}}
 PATCH {{baseUrl}}/users/promote/{{userBId}}
 Authorization: Bearer {{adminToken}}
 
-### Rate limiter demo 1
-GET {{baseUrl}}/health
-
-### Rate limiter demo 2
-GET {{baseUrl}}/health
-
-### Rate limiter demo 3
-GET {{baseUrl}}/health
-
-### Rate limiter demo 4
-GET {{baseUrl}}/health
-
-### Rate limiter demo 5
-GET {{baseUrl}}/health
-
-### Rate limiter demo 6
-# По умолчанию здесь уже должен появиться 429 Too Many Requests,
-# если вы нажимали запросы подряд в пределах 60 секунд.
+### Rate limiter demo
 GET {{baseUrl}}/health
